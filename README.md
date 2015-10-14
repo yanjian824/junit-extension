@@ -86,39 +86,39 @@ protected void runChild(final FrameworkMethod method, RunNotifier notifier) {
     if (method.getAnnotation(Ignore.class) != null) {
         notifier.fireTestIgnored(description);
     } else {
-//    	  runLeaf(methodBlock(method), description, notifier);
-		    	Statement statement = methodBlock(method);
-		    	int retry = 1;
-					// 获取Retry的次数
-		    	for (TestRule rule: classRules()) {
-			    		if (Retry.class.isInstance(rule)) {
-			    			retry = ((Retry) rule).getCount();
-			    	  }
-	        }
-		    	for (int i = 0; i < retry; i++) {
-			    		boolean result = myRunLeaf(statement, description, notifier);
-			    		if (result) {
-			    				break;
-			    		}
-					}
+        //runLeaf(methodBlock(method), description, notifier);
+        Statement statement = methodBlock(method);
+        int retry = 1;
+        // 获取Retry的次数
+        for (TestRule rule: classRules()) {
+            if (Retry.class.isInstance(rule)) {
+                retry = ((Retry) rule).getCount();
+            }
+        }
+        for (int i = 0; i < retry; i++) {
+        boolean result = myRunLeaf(statement, description, notifier);
+            if (result) {
+                break;
+            }
+        }
     }
 }
 
 private boolean myRunLeaf(Statement statement, Description description, RunNotifier notifier) {
-		boolean result = false;
-		EachTestNotifier eachNotifier = new EachTestNotifier(notifier, description);
-	  eachNotifier.fireTestStarted();
-	  try {
-	      statement.evaluate();
-	      result = true;
-	  } catch (AssumptionViolatedException e) {
-	      eachNotifier.addFailedAssumption(e);
-	  } catch (Throwable e) {
-	      eachNotifier.addFailure(e);
-	  } finally {
-	      eachNotifier.fireTestFinished();
-	  }
-		return result; 	
+    boolean result = false;
+    EachTestNotifier eachNotifier = new EachTestNotifier(notifier, description);
+    eachNotifier.fireTestStarted();
+    try {
+        statement.evaluate();
+        result = true;
+    } catch (AssumptionViolatedException e) {
+        eachNotifier.addFailedAssumption(e);
+    } catch (Throwable e) {
+        eachNotifier.addFailure(e);
+    } finally {
+        eachNotifier.fireTestFinished();
+    }
+    return result;  
 }
 ```
 
