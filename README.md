@@ -59,6 +59,7 @@ public class MyRunner {}
 
 类`CustomSuite`的方法`run(RunNotifier notifier)`与基类`ParentRunner<T>`的实现比，只多了一行代码。如果没有这一行，RunListener的回调函数`public void testRunStarted(Description description)`不会执行。
 ```java
+// 多出的一行代码
 notifier.fireTestRunStarted(description);
 ```
 
