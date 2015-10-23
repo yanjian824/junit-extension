@@ -166,3 +166,22 @@ private boolean myRunLeaf(Statement statement, Description description, RunNotif
   }
 }
 ```
+
+### 运行界面
+
+```shell
+
+2015-10-23 23:30:30: TestSuite【org.sdet.junit.MyRunner】 - 开始
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2015-10-23 23:30:30: TestCase【org.sdet.junit.HelloJUnitExtension.shouldFail】 - 第1次测试 - 开始
+2015-10-23 23:30:30: TestCase【org.sdet.junit.HelloJUnitExtension.shouldFail】 - 第1次测试 - 结束 - 【结果:失败】
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2015-10-23 23:30:30: TestCase【org.sdet.junit.HelloJUnitExtension.shouldFail】 - 第2次测试 - 开始
+2015-10-23 23:30:30: TestCase【org.sdet.junit.HelloJUnitExtension.shouldFail】 - 第2次测试 - 结束 - 【结果:失败】
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2015-10-23 23:30:30: TestCase【org.sdet.junit.HelloJUnitExtension.shouldPass】 - 第1次测试 - 开始
+2015-10-23 23:30:30: TestCase【org.sdet.junit.HelloJUnitExtension.shouldPass】 - 第1次测试 - 结束 - 【结果:通过】
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2015-10-23 23:30:30: TestSuite【org.sdet.junit.MyRunner】 - 结束
+
+```
